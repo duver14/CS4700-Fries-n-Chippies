@@ -84,9 +84,6 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
         }
 
-        Debug.Log(animator.GetFloat("Speed"));
-        Debug.Log(animator.GetBool("isJumping"));
-
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }
