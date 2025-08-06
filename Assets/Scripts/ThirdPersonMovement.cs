@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    Animator animator;
-
     // Public variables for easy tuning in the Unity Inspector
     public float moveSpeed = 10f;
-    public float jumpHeight = 2f;
-    public float gravity = -9.81f * 2;
+    public float jumpHeight = 10f;
+    public float gravity = -9.81f * 4;
     public Transform cameraTransform;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
+
+    public Vector3 moveDirection;
 
     void Start()
     {
@@ -23,9 +23,6 @@ public class CharacterMovement : MonoBehaviour
 
         //Locking the cursor to the middle of the screen
         Cursor.lockState = CursorLockMode.Locked;
-
-        // Assigning animator
-        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,7 +33,6 @@ public class CharacterMovement : MonoBehaviour
         {
             // Reset the vertical velocity 
             playerVelocity.y = -2f;
-            animator.SetBool("isJumping", false);
         }
 
         // Get horizontal and vertical input from the user (WASD or arrow keys)
@@ -44,23 +40,15 @@ public class CharacterMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
-        // Handle Animation
-        if (moveDirection == Vector3.zero)
-        {
-            // Idle
-            animator.SetFloat("Speed", 0f);
-        }
-        else if (!Input.GetKey(KeyCode.LeftShift))
+        if (!Input.GetKey(KeyCode.LeftShift))
         {
             // Walking
-            moveSpeed = 10f;
-            animator.SetFloat("Speed", 0.5f);
+            moveSpeed = 15f;
         }
         else
         {
             // Running
-            moveSpeed = 20f;
-            animator.SetFloat("Speed", 1.5f);
+            moveSpeed = 30f;
         }
 
         // Apply movement
@@ -81,7 +69,6 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            animator.SetBool("isJumping", true);
         }
 
         playerVelocity.y += gravity * Time.deltaTime;

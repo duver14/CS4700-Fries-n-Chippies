@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 23945c264cc402b44b1a120f9269645d
+guid: 74b58e3edac7d6e42bfd613c8307eb9e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Screenshot 2025-07-28 165109
-    second: {fileID: 2800000, guid: 0e8bbd4d13a0d2f428a90dbb26ff4353, type: 3}
+      name: Material.001
+    second: {fileID: 2100000, guid: 60f9f77a5889a324881a5965e451883b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -38,9 +38,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Idle
-      takeName: Armature|Idle
-      internalID: -8945691123924629249
+      name: Bone_Armature|Rotating_Floating (1)
+      takeName: Bone_Armature|Rotating_Floating
+      internalID: -6382643884600585535
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0
@@ -67,9 +67,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Idle_Head_Tilt
-      takeName: Armature|Idle_Head_Tilt
-      internalID: -7938933599346227548
+      name: Bone_Armature|Rotating_Floating
+      takeName: Bone_Armature|Rotating_Floating
+      internalID: -2798317123820558203
       firstFrame: 0
       lastFrame: 39
       wrapMode: 0
@@ -96,11 +96,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Idle_Head_Turn
-      takeName: Armature|Idle_Head_Turn
-      internalID: -934388904167283419
+      name: Bone_Armature|Rotating_Floating.001
+      takeName: Bone_Armature|Rotating_Floating.001
+      internalID: 4532324107786311081
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -125,69 +125,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Jumping
-      takeName: Armature|Jumping
-      internalID: 8970833319722948074
+      name: Bone_Armature|Rotating_Floating.002
+      takeName: Bone_Armature|Rotating_Floating.002
+      internalID: -9129791965090942376
       firstFrame: 0
-      lastFrame: 49
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Running_Cycle
-      takeName: Armature|Running_Cycle
-      internalID: 1187574132844190123
-      firstFrame: 0
-      lastFrame: 58
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Walking_Cycle
-      takeName: Armature|Walking_Cycle
-      internalID: 5021335807450263452
-      firstFrame: 0
-      lastFrame: 32
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
