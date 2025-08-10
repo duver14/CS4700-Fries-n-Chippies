@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    
+
     public string ItemName;
     public bool playerInRange;
 
@@ -14,11 +16,22 @@ public class InteractableObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && playerInRange && SelectionManager.Instance.onTarget) 
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange /*&& SelectionManager.Instance.onTarget*/)
         {
-            Debug.Log("item added to inventory");
+            // Checks if inventory is not full
+            if (!InventorySystem.Instance.CheckIfFull())
+            {
+                
+                InventorySystem.Instance.AddToInventory(ItemName);
+                Destroy(gameObject);
 
-            Destroy(gameObject);
+                
+            }
+            else
+            {
+                Debug.Log("Inventory is full");
+            }
+            
         }
     }
 
@@ -32,9 +45,9 @@ public class InteractableObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       if (other.CompareTag("Player"))
-       {
+        if (other.CompareTag("Player"))
+        {
             playerInRange = false;
-       }
+        }
     }
 }

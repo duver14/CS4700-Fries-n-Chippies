@@ -1,24 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using System.Xml.Serialization;
+
 
 public class SelectionManager : MonoBehaviour
 {
-    public static SelectionManager Instance { get; set; }
-    
+
+    //public static SelectionManager Instance { get; set; }
+
     public bool onTarget;
-    
+
     public GameObject interaction_Info_UI;
-    TextMeshProUGUI interaction_text;
+    TMP_Text interaction_text;
 
     private void Start()
     {
         onTarget = false;
-        interaction_text = interaction_Info_UI.GetComponent<TextMeshProUGUI>();
+
+        interaction_text = interaction_Info_UI.GetComponent<TMP_Text>();
     }
 
+    /*
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,34 +35,41 @@ public class SelectionManager : MonoBehaviour
             Instance = this;
         }
     }
+    */
 
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
             var selectionTransform = hit.transform;
+            Debug.Log("Raycast hit an object.");
 
-            InteractableObject interactable = selectionTransform.GetComponent<InteractableObject>();
-
-            if (interactable && interactable.playerInRange)
+            if (selectionTransform.GetComponent<InteractableObject>() && selectionTransform.GetComponent<InteractableObject>().playerInRange)
             {
                 onTarget = true;
                 
-                interaction_text.text = interactable.GetItemName();
+                
+                Debug.Log("Hit object: " + selectionTransform.name);
+                interaction_text.text = selectionTransform.GetComponent<InteractableObject>().GetItemName();
                 interaction_Info_UI.SetActive(true);
             }
             else
             {
                 onTarget = false;
+
                 interaction_Info_UI.SetActive(false);
             }
+
         }
         else
         {
+
             onTarget = false;
             interaction_Info_UI.SetActive(false);
         }
     }
 }
+

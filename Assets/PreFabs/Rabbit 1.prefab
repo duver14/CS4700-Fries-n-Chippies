@@ -234,9 +234,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4866470835608158613}
   - component: {fileID: 6574520192501527795}
+  - component: {fileID: 5465043836249829761}
   - component: {fileID: -795749095232280459}
   - component: {fileID: -8247473489756719873}
-  - component: {fileID: 5465043836249829761}
   m_Layer: 0
   m_Name: Rabbit 1
   m_TagString: Untagged
@@ -283,6 +283,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5465043836249829761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299026324256485355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cb7ab6f392feb4fa72e3c8b8d71056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.2
+  walkCounter: 0
+  waitCounter: 0
+  isWalking: 0
 --- !u!65 &-795749095232280459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -302,8 +318,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.6796221, z: 1}
+  m_Center: {x: 0, y: 0.38340962, z: 0}
 --- !u!54 &-8247473489756719873
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -329,20 +345,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &5465043836249829761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299026324256485355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cb7ab6f392feb4fa72e3c8b8d71056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2615570927729726071
 GameObject:
   m_ObjectHideFlags: 0
