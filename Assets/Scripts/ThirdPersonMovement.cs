@@ -27,52 +27,54 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if the character is on the ground
-        isGrounded = controller.isGrounded;
-        if (isGrounded && playerVelocity.y < 0)
-        {
-            // Reset the vertical velocity 
-            playerVelocity.y = -2f;
-        }
 
-        // Get horizontal and vertical input from the user (WASD or arrow keys)
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+            // Check if the character is on the ground
+            isGrounded = controller.isGrounded;
+            if (isGrounded && playerVelocity.y < 0)
+            {
+                // Reset the vertical velocity 
+                playerVelocity.y = -2f;
+            }
 
-        if (!Input.GetKey(KeyCode.LeftShift))
-        {
-            // Walking
-            moveSpeed = 15f;
-        }
-        else
-        {
-            // Running
-            moveSpeed = 30f;
-        }
+            // Get horizontal and vertical input from the user (WASD or arrow keys)
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
 
-        // Apply movement
-        if (moveDirection.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                // Walking
+                moveSpeed = 15f;
+            }
+            else
+            {
+                // Running
+                moveSpeed = 30f;
+            }
+        
+            // Apply movement
+            if (moveDirection.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
 
-            // Rotate the character to face the direction of movement
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+                // Rotate the character to face the direction of movement
+                transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            // Move the character
-            controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
-        }
+                // Move the character
+                controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
+            }
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+            // Handle jumping
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
 
-        playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+            playerVelocity.y += gravity * Time.deltaTime;
+            controller.Move(playerVelocity * Time.deltaTime);
+
     }
 }
 

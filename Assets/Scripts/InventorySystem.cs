@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -41,14 +39,13 @@ public class InventorySystem : MonoBehaviour
     void Start()
     {
         isOpen = false;
-        
 
         PopulateSlotList();
     }
 
     private void PopulateSlotList()
     {
-        foreach (Transform child in inventoryScreenUI.transform)
+        foreach(Transform child in inventoryScreenUI.transform)
         {
             if (child.CompareTag("Slot"))
             {
@@ -56,7 +53,6 @@ public class InventorySystem : MonoBehaviour
             }
         }
     }
-
 
     void Update()
     {
@@ -66,30 +62,31 @@ public class InventorySystem : MonoBehaviour
 
             Debug.Log("i is pressed");
             inventoryScreenUI.SetActive(true);
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
             isOpen = true;
 
         }
         else if (Input.GetKeyDown(KeyCode.I) && isOpen)
         {
             inventoryScreenUI.SetActive(false);
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Locked;
             isOpen = false;
         }
     }
 
-
-    public void AddToInventory(string itemName)
+    public void AddToIventory(string itemName)
     {
       
-    
-            whatSlotToEquip = FindNextEmptySlot();
+        whatSlotToEquip = FindNextEmptySlot();
 
-            itemToAdd = (GameObject)Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
-            itemToAdd.transform.SetParent(whatSlotToEquip.transform);
+        itemToAdd = Instantiate(Resources.Load<GameObject>(itemName), whatSlotToEquip.transform.position, whatSlotToEquip.transform.rotation);
 
-            itemList.Add(itemName);
-     
+
+
+        itemToAdd.transform.SetParent(whatSlotToEquip.transform);
+
+        itemList.Add(itemName);
+        
     }
 
     private GameObject FindNextEmptySlot()
@@ -100,7 +97,6 @@ public class InventorySystem : MonoBehaviour
             {
                 return slot;
             }
-            
         }
 
         return new GameObject();
@@ -110,13 +106,12 @@ public class InventorySystem : MonoBehaviour
     {
         int counter = 0;
 
-        foreach(GameObject slot in slotList)
+        foreach (GameObject slot in slotList)
         {
             if (slot.transform.childCount > 0)
             {
                 counter += 1;
             }
-
         }
 
 
@@ -128,5 +123,7 @@ public class InventorySystem : MonoBehaviour
         {
             return false;
         }
+
+
     }
 }

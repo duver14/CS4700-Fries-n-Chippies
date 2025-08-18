@@ -13,28 +13,28 @@ public class InteractableObject : MonoBehaviour
     {
         return ItemName;
     }
-
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange /*&& SelectionManager.Instance.onTarget*/)
+        SelectionManager selectionManager = SelectionManager.Instance;
+        
+        if (Input.GetKeyDown(KeyCode.E) && playerInRange && selectionManager.onTarget)
         {
-            // Checks if inventory is not full
+            // If inventory is not full
             if (!InventorySystem.Instance.CheckIfFull())
             {
-                
-                InventorySystem.Instance.AddToInventory(ItemName);
+                //InventorySystem.Instance.AddToIventory(ItemName);
                 Destroy(gameObject);
-
-                
             }
             else
             {
-                Debug.Log("Inventory is full");
+                Debug.Log("Inventory is Full");
             }
+            
             
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
